@@ -100,9 +100,11 @@ Provides Connection via dccm for WinCE devices.
 %setup -q
 
 %build
-DHCLIENTPATH=/sbin/dhclient \
-UDEVADMPATH=/sbin/udevadm \
 %configure \
+	DHCLIENTPATH=/sbin/dhclient \
+	UDEVADMPATH=/sbin/udevadm \
+	IFCONFIGPATH=/sbin/ifconfig \
+	PPPDPATH=/usr/sbin/pppd \
 	--enable-udev \
 
 #	%{!?with_dccm: --disable-dccm-file-support} \
