@@ -131,7 +131,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS README TODO ChangeLog
+%doc README TODO ChangeLog
 %attr(755,root,root) %{_bindir}/synce-unlock
 %attr(755,root,root) %{_libdir}/synce-serial-chat
 %dir %{_datadir}/synce-core
@@ -155,7 +155,7 @@ rm -rf $RPM_BUILD_ROOT
 %files lib-devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libsynce.so
-%{_includedir}/synce*.h
+%{_includedir}/*.h
 %{_pkgconfigdir}/libsynce.pc
 %{_mandir}/man3/*
 
