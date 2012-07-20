@@ -18,7 +18,7 @@ Release:	0.1
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/synce/%{name}-%{version}.tar.gz
-# Source0-md5:	d557b3fd89b8ecdff6772bd7e1d2451e
+# Source0-md5:	e823e5b97b57c568129c116fc289bcf3
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
@@ -47,7 +47,7 @@ Group:		Applications/System
 Requires:	%{name} = %{version}-%{release}
 Requires:	synce-odccm
 
-%description -n synce-connector-odccm
+%description odccm
 Provides Connection via odccm for WinCE devices.
 
 %package dccm
