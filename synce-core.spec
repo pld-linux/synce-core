@@ -1,10 +1,10 @@
 # TODO:
-# - check connector-dccm requirements
+# - check connector-(o)dccm requirements
 # - bluetooth?
 #
 # Conditional build:
-%bcond_without	dccm	# build without dccm file support
-%bcond_without	odccm	# build without odccm support
+%bcond_with	dccm	# build without dccm file support
+%bcond_with	odccm	# build without odccm support
 #
 Summary:	Connection framework and dccm-implementation for WinCE devices
 Name:		synce-core
@@ -106,11 +106,9 @@ Provides Connection via dccm for WinCE devices.
 	IFCONFIGPATH=/sbin/ifconfig \
 	PPPDPATH=/usr/sbin/pppd \
 	--enable-udev \
-
-#	%{!?with_dccm: --disable-dccm-file-support} \
-#	%{!?with_odccm: --disable-odccm-support}
-#
-#  --enable-bluetooth-support Build in bluetooth support
+	%{__enable_disable dccm dccm-file-support} \
+	%{__enable_disable odccm odccm-support} \
+	--enable-bluetooth-support
 
 %{__make}
 
