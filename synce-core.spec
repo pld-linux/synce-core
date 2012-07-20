@@ -3,14 +3,9 @@
 # - bluetooth?
 #
 # Conditional build:
-%bcond_without	dbus	# build without DBus support
 %bcond_without	dccm	# build without dccm file support
 %bcond_without	odccm	# build without odccm support
-
-%if %{without dbus}
-%undefine	with_odccm
-%endif
-
+#
 Summary:	Connection framework and dccm-implementation for WinCE devices
 Name:		synce-core
 Version:	0.16
@@ -22,7 +17,7 @@ Source0:	http://downloads.sourceforge.net/synce/%{name}-%{version}.tar.gz
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
-%{?with_dbus:BuildRequires:	dbus-glib-devel >= 0.60}
+BuildRequires:	dbus-glib-devel >= 0.60
 BuildRequires:	gnet-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
@@ -59,8 +54,8 @@ Summary:	Header files for libsynce library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libsynce
 Group:		Development/Libraries
 Requires:	%{name}-lib = %{version}-%{release}
-%{?with_dbus:Requires:	dbus-devel}
-%{?with_dbus:Requires:	dbus-glib-devel}
+Requires:	dbus-devel
+Requires:	dbus-glib-devel
 Obsoletes:	synce-libsynce-devel
 
 %description lib-devel
