@@ -1,11 +1,14 @@
 # TODO:
 # - check connector-(o)dccm requirements
 # - bluetooth?
+# - upgrade paths from 0.15 packages (missing obsoletes/provides, package renames?)
+#   finish package: http://lists.pld-linux.org/mailman/pipermail/pld-devel-en/2012-July/022878.html
+#   and http://lists.pld-linux.org/mailman/pipermail/pld-devel-en/2012-July/022880.html
 #
 # Conditional build:
 %bcond_with	dccm	# build without dccm file support
 %bcond_with	odccm	# build without odccm support
-#
+
 Summary:	Connection framework and dccm-implementation for WinCE devices
 Name:		synce-core
 Version:	0.16
