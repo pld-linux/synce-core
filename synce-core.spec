@@ -22,7 +22,6 @@ URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
 BuildRequires:	glib2-devel >= 1:2.26
-BuildRequires:	gnet-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	python-Pyrex >= 0.9.6
