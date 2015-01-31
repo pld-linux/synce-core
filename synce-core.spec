@@ -31,6 +31,7 @@ BuildRequires:	udev-devel
 BuildRequires:	udev-glib-devel
 Requires:	%{name}-lib = %{version}-%{release}
 Requires:	dhcp-client
+Obsoletes:	synce-librapi2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -63,6 +64,7 @@ Group:		Development/Libraries
 Requires:	%{name}-lib = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.26
 Obsoletes:	synce-libsynce-devel
+Obsoletes:	synce-librapi2-devel
 
 %description lib-devel
 Header files for libsynce library.
@@ -76,6 +78,7 @@ Summary(pl.UTF-8):	Statyczna biblioteka libsynce
 Group:		Development/Libraries
 Requires:	%{name}-lib = %{version}-%{release}
 Obsoletes:	synce-libsynce-static
+Obsoletes:	synce-librapi2-static
 
 %description lib-static
 Static libsynce library.
