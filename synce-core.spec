@@ -121,9 +121,9 @@ Summary:	Connection via dccm for WinCE devices
 Summary(pl.UTF-8):	Połączenie poprzez dccm z urządzeniami WinCE
 Group:		Applications/System
 Requires:	%{name} = %{version}-%{release}
-# check what is actually required
-Requires:	synce-vdccm
 Obsoletes:	synce-connector-dccm
+Obsoletes:	synce-dccm
+Obsoletes:	synce-vdccm
 
 %description dccm
 This package provides connection via dccm for WinCE devices.
