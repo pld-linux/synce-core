@@ -34,6 +34,7 @@ Requires:	dhcp-client
 Obsoletes:	synce-connector
 Obsoletes:	synce-connector-hal
 Obsoletes:	synce-connector-udev
+Obsoletes:	synce-hal
 Obsoletes:	synce-librapi2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
