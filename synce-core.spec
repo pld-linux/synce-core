@@ -31,6 +31,9 @@ BuildRequires:	udev-devel
 BuildRequires:	udev-glib-devel
 Requires:	%{name}-lib = %{version}-%{release}
 Requires:	dhcp-client
+Obsoletes:	synce-connector
+Obsoletes:	synce-connector-hal
+Obsoletes:	synce-connector-udev
 Obsoletes:	synce-librapi2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -104,6 +107,7 @@ Summary(pl.UTF-8):	Połączenie poprzez odccm z urządzeniami WinCE
 Group:		Applications/System
 Requires:	%{name} = %{version}-%{release}
 Requires:	synce-odccm
+Obsoletes:	synce-connector-odccm
 
 %description odccm
 This package provides connection via odccm for WinCE devices.
@@ -118,6 +122,7 @@ Group:		Applications/System
 Requires:	%{name} = %{version}-%{release}
 # check what is actually required
 Requires:	synce-vdccm
+Obsoletes:	synce-connector-dccm
 
 %description dccm
 This package provides connection via dccm for WinCE devices.
