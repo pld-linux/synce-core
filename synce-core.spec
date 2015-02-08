@@ -36,6 +36,7 @@ Obsoletes:	synce-connector-hal
 Obsoletes:	synce-connector-udev
 Obsoletes:	synce-hal
 Obsoletes:	synce-librapi2
+Obsoletes:	synce-serial
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -167,7 +168,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc BUGS ChangeLog LICENSE README TODO
-%attr(755,root,root) %{_libdir}/synce-serial-chat
 %attr(755,root,root) %{_bindir}/pcp
 %attr(755,root,root) %{_bindir}/pkillall
 %attr(755,root,root) %{_bindir}/pls
@@ -187,6 +187,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/synce-remove-program
 %attr(755,root,root) %{_bindir}/synce-serial
 %attr(755,root,root) %{_bindir}/synce-unlock
+%attr(755,root,root) %{_libdir}/synce-serial-chat
 /etc/dbus-1/system.d/org.synce.dccm.conf
 /lib/udev/rules.d/85-synce.rules
 %attr(755,root,root) /lib/udev/synce-udev-rndis
