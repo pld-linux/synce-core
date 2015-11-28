@@ -13,7 +13,7 @@ Summary:	Connection framework and DCCM implementation for WinCE devices
 Summary(pl.UTF-8):	Szkielet połączeń oraz implementacja DCCM dla urządzeń WinCE
 Name:		synce-core
 Version:	0.17
-Release:	2
+Release:	3
 License:	MIT
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/synce/%{name}-%{version}.tar.gz
