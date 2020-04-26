@@ -13,7 +13,7 @@ Summary:	Connection framework and DCCM implementation for WinCE devices
 Summary(pl.UTF-8):	Szkielet połączeń oraz implementacja DCCM dla urządzeń WinCE
 Name:		synce-core
 Version:	0.17
-Release:	4
+Release:	5
 License:	MIT
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/synce/%{name}-%{version}.tar.gz
@@ -193,7 +193,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/synce-remove-program
 %attr(755,root,root) %{_bindir}/synce-serial
 %attr(755,root,root) %{_bindir}/synce-unlock
-%attr(755,root,root) %{_libdir}/synce-serial-chat
+%attr(755,root,root) %{_libexecdir}/synce-serial-chat
 /etc/dbus-1/system.d/org.synce.dccm.conf
 /lib/udev/rules.d/85-synce.rules
 %attr(755,root,root) /lib/udev/synce-udev-rndis
@@ -264,5 +264,5 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with dccm}
 %files dccm
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/dccm
+%attr(755,root,root) %{_libexecdir}/dccm
 %endif
