@@ -13,7 +13,7 @@ Summary:	Connection framework and DCCM implementation for WinCE devices
 Summary(pl.UTF-8):	Szkielet połączeń oraz implementacja DCCM dla urządzeń WinCE
 Name:		synce-core
 Version:	0.17
-Release:	3
+Release:	4
 License:	MIT
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/synce/%{name}-%{version}.tar.gz
@@ -27,6 +27,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	python-Pyrex >= 0.9.6
 BuildRequires:	python-devel >= 1:2.3
 BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	sed >= 4.0
 BuildRequires:	udev-devel
 BuildRequires:	udev-glib-devel
 Requires:	%{name}-lib = %{version}-%{release}
@@ -134,6 +135,11 @@ Ten pakiet zapewnia połączenie poprzez dccm z urządzeniami WinCE.
 
 %prep
 %setup -q
+
+%{__sed} -i -e '1s,/usr/bin/env python$,%{__python},' \
+	bluetooth/synce-udev-bt-ipup.in \
+	dccm/synce-unlock \
+	scripts/{synce-serial,udev-synce-rndis,udev-synce-serial}.in
 
 %build
 %configure \
