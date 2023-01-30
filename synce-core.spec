@@ -32,12 +32,12 @@ BuildRequires:	udev-devel
 BuildRequires:	udev-glib-devel
 Requires:	%{name}-lib = %{version}-%{release}
 Requires:	dhcp-client
-Obsoletes:	synce-connector
-Obsoletes:	synce-connector-hal
-Obsoletes:	synce-connector-udev
-Obsoletes:	synce-hal
-Obsoletes:	synce-librapi2
-Obsoletes:	synce-serial
+Obsoletes:	synce-connector < 0.16
+Obsoletes:	synce-connector-hal < 0.16
+Obsoletes:	synce-connector-udev < 0.16
+Obsoletes:	synce-hal < 0.16
+Obsoletes:	synce-librapi2 < 0.16
+Obsoletes:	synce-serial < 0.12
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -53,7 +53,7 @@ Summary:	Core SynCE library
 Summary(pl.UTF-8):	Podstawowa biblioteka SynCE
 Group:		Libraries
 Requires:	glib2 >= 1:2.26
-Obsoletes:	synce-libsynce
+Obsoletes:	synce-libsynce < 0.16
 
 %description lib
 libsynce is part of the SynCE project. It's required for (at least)
@@ -69,8 +69,8 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libsynce
 Group:		Development/Libraries
 Requires:	%{name}-lib = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.26
-Obsoletes:	synce-libsynce-devel
-Obsoletes:	synce-librapi2-devel
+Obsoletes:	synce-libsynce-devel < 0.16
+Obsoletes:	synce-librapi2-devel < 0.16
 
 %description lib-devel
 Header files for libsynce library.
@@ -83,8 +83,8 @@ Summary:	Static libsynce library
 Summary(pl.UTF-8):	Statyczna biblioteka libsynce
 Group:		Development/Libraries
 Requires:	%{name}-lib = %{version}-%{release}
-Obsoletes:	synce-libsynce-static
-Obsoletes:	synce-librapi2-static
+Obsoletes:	synce-libsynce-static < 0.16
+Obsoletes:	synce-librapi2-static < 0.16
 
 %description lib-static
 Static libsynce library.
@@ -109,8 +109,8 @@ Summary:	Connection via odccm for WinCE devices
 Summary(pl.UTF-8):	Połączenie poprzez odccm z urządzeniami WinCE
 Group:		Applications/System
 Requires:	%{name} = %{version}-%{release}
-Obsoletes:	synce-odccm
-Obsoletes:	synce-connector-odccm
+Obsoletes:	synce-odccm < 0.13
+Obsoletes:	synce-connector-odccm < 0.16
 
 %description odccm
 This package provides connection via odccm for WinCE devices.
@@ -123,9 +123,9 @@ Summary:	Connection via dccm for WinCE devices
 Summary(pl.UTF-8):	Połączenie poprzez dccm z urządzeniami WinCE
 Group:		Applications/System
 Requires:	%{name} = %{version}-%{release}
-Obsoletes:	synce-connector-dccm
-Obsoletes:	synce-dccm
-Obsoletes:	synce-vdccm
+Obsoletes:	synce-connector-dccm < 0.16
+Obsoletes:	synce-dccm < 0.10
+Obsoletes:	synce-vdccm < 0.11
 
 %description dccm
 This package provides connection via dccm for WinCE devices.
