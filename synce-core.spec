@@ -8,24 +8,26 @@
 # Conditional build:
 %bcond_without	dccm	# dccm file support
 %bcond_without	odccm	# odccm support
+%bcond_with	python	# don't build python bindings (require dead python2 + Pyrex)
 
 Summary:	Connection framework and DCCM implementation for WinCE devices
 Summary(pl.UTF-8):	Szkielet połączeń oraz implementacja DCCM dla urządzeń WinCE
 Name:		synce-core
 Version:	0.17
-Release:	5
+Release:	6
 License:	MIT
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/synce/%{name}-%{version}.tar.gz
 # Source0-md5:	ee0b9369b6fea5e2d1b970503dd7cb0e
+Patch0:		%{name}-incompatible-pointer-types.patch
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
 BuildRequires:	glib2-devel >= 1:2.26
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-BuildRequires:	python-Pyrex >= 0.9.6
-BuildRequires:	python-devel >= 1:2.3
+%{?with_python:BuildRequires:	python-Pyrex >= 0.9.6}
+%{?with_python:BuildRequires:	python-devel >= 1:2.3}
 BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	sed >= 4.0
 BuildRequires:	udev-devel
@@ -92,6 +94,7 @@ Static libsynce library.
 %description lib-static -l pl.UTF-8
 Statyczna biblioteka libsynce.
 
+%if %{with python}
 %package -n python-pyrapi2
 Summary:	Python binding for synce library
 Summary(pl.UTF-8):	Wiązanie Pythona do biblioteki synce
@@ -103,6 +106,7 @@ Python binding for synce library.
 
 %description -n python-pyrapi2 -l pl.UTF-8
 Wiązanie Pythona do biblioteki synce.
+%endif
 
 %package odccm
 Summary:	Connection via odccm for WinCE devices
@@ -135,6 +139,7 @@ Ten pakiet zapewnia połączenie poprzez dccm z urządzeniami WinCE.
 
 %prep
 %setup -q
+%patch -P 0 -p1
 
 %{__sed} -i -e '1s,/usr/bin/env python$,%{__python},' \
 	bluetooth/synce-udev-bt-ipup.in \
@@ -143,13 +148,15 @@ Ten pakiet zapewnia połączenie poprzez dccm z urządzeniami WinCE.
 
 %build
 %configure \
+	CFLAGS="%{rpmcflags} -std=gnu17" \
 	DHCLIENTPATH=/sbin/dhclient \
 	UDEVADMPATH=/sbin/udevadm \
 	IFCONFIGPATH=/sbin/ifconfig \
 	PPPDPATH=/usr/sbin/pppd \
 	--enable-bluetooth-support \
 	%{__enable_disable dccm dccm-file-support} \
-	%{__enable_disable odccm odccm-support}
+	%{__enable_disable odccm odccm-support} \
+	%{!?with_python:--disable-python-bindings}
 
 %{__make}
 
@@ -163,7 +170,9 @@ rm -rf $RPM_BUILD_ROOT
 %py_postclean %{_datadir}/%{name}
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libsynce.la
+%if %{with python}
 %{__rm} $RPM_BUILD_ROOT%{py_sitedir}/pyrapi2.{la,a}
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -252,9 +261,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libsynce.a
 
+%if %{with python}
 %files -n python-pyrapi2
 %defattr(644,root,root,755)
 %attr(755,root,root) %{py_sitedir}/pyrapi2.so
+%endif
 
 %if %{with odccm}
 %files odccm

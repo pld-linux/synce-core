@@ -1,0 +1,11 @@
+--- synce-core-0.17/dccm/synce-device-manager.c.orig
++++ synce-core-0.17/dccm/synce-device-manager.c
+@@ -469,7 +469,7 @@ synce_device_manager_get_connected_devic
+     device_entry_iter = g_slist_next(device_entry_iter);
+   }
+
+-  synce_dbus_device_manager_complete_get_connected_devices(interface, invocation, device_list);
++  synce_dbus_device_manager_complete_get_connected_devices(interface, invocation, (const gchar * const *)device_list);
+
+   g_strfreev(device_list);
+
